@@ -1,22 +1,30 @@
 #include "Game/Game.h"
+#include "Game/Player.h"
 
 bool GAME_RUNNING = false;
 
 int main() {
 
     SetTraceLogLevel(LOG_NONE);
+    Game::Game game;
 
-    Game game;
-    game.init();
+    Game::Player player({20,20}, {100,20}, {80,80,80,255});
 
-    bool exitWindow = false;
 
-    while(!exitWindow)
+    while(!GAME_RUNNING)
     {
-        if (IsKeyPressed(KEY_ESCAPE) || WindowShouldClose()) exitWindow = true;
+        if (IsKeyPressed(KEY_ESCAPE) || WindowShouldClose()) GAME_RUNNING = true;
 
         BeginDrawing();
-            ClearBackground(DARKBLUE);
+            ClearBackground(GRAY);
+
+            DrawRectangle(
+                player.position.x,
+                player.position.y,
+                player.size.x,
+                player.size.y,
+                player.color
+            );
         EndDrawing();
     }
 
