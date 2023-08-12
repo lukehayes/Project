@@ -6,4 +6,21 @@ namespace Game
         : position(pos), size(size), color(color){}
 
     Player::~Player() {}
+
+    void Player::update(double dt)
+    {
+        this->position.x += 50 * dt;
+        this->position.y += 50 * dt;
+    }
+
+    void Player::render()
+    {
+        DrawRectangle(
+            this->position.x,
+            this->position.y,
+            this->size.x,
+            this->size.y,
+            this->color
+        );
+    }
 }
