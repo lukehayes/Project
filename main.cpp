@@ -15,16 +15,13 @@ int main() {
     {
         if (IsKeyPressed(KEY_ESCAPE) || WindowShouldClose()) GAME_RUNNING = true;
 
+        player.update(GetFrameTime());
+
+
         BeginDrawing();
             ClearBackground(GRAY);
 
-            DrawRectangle(
-                player.position.x,
-                player.position.y,
-                player.size.x,
-                player.size.y,
-                player.color
-            );
+            player.render();
         EndDrawing();
     }
 
