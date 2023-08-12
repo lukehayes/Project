@@ -20,6 +20,8 @@ namespace Game
         Vector2 position;
         Vector2 size;
         Color color;
+
+        const float SPEED = 200.0;
     };
 }
 

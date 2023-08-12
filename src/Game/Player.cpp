@@ -1,4 +1,5 @@
 #include "Game/Player.h"
+#include <raylib.h>
 
 namespace Game
 {
@@ -9,8 +10,28 @@ namespace Game
 
     void Player::update(double dt)
     {
-        this->position.x += 50 * dt;
-        this->position.y += 50 * dt;
+        //--------------------------------------------------------------------- 
+        // Player Control
+        //--------------------------------------------------------------------- 
+        if(IsKeyDown(KEY_W))
+        {
+            this->position.y -= SPEED * dt;
+        }
+
+        if(IsKeyDown(KEY_S))
+        {
+            this->position.y += SPEED * dt;
+        }
+
+        if(IsKeyDown(KEY_A))
+        {
+            this->position.x -= SPEED * dt;
+        }
+
+        if(IsKeyDown(KEY_D))
+        {
+            this->position.x += SPEED * dt;
+        }
     }
 
     void Player::render()
