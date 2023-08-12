@@ -3,8 +3,8 @@
 
 namespace Game
 {
-    Player::Player(const Vector2& pos, const Vector2& size, const Color& color)
-        : position(pos), size(size), color(color){}
+    Player::Player(const Rectangle& rect, const Color& color)
+        : shape(rect), color(color){}
 
     Player::~Player() {}
 
@@ -15,32 +15,32 @@ namespace Game
         //--------------------------------------------------------------------- 
         if(IsKeyDown(KEY_W))
         {
-            this->position.y -= SPEED * dt;
+            this->shape.y -= SPEED * dt;
         }
 
         if(IsKeyDown(KEY_S))
         {
-            this->position.y += SPEED * dt;
+            this->shape.y += SPEED * dt;
         }
 
         if(IsKeyDown(KEY_A))
         {
-            this->position.x -= SPEED * dt;
+            this->shape.x -= SPEED * dt;
         }
 
         if(IsKeyDown(KEY_D))
         {
-            this->position.x += SPEED * dt;
+            this->shape.x += SPEED * dt;
         }
     }
 
     void Player::render()
     {
         DrawRectangle(
-            this->position.x,
-            this->position.y,
-            this->size.x,
-            this->size.y,
+            this->shape.x,
+            this->shape.y,
+            this->shape.width,
+            this->shape.height,
             this->color
         );
     }

@@ -10,15 +10,14 @@ namespace Game
     class Player : public Entity
     {
     public:
-        Player(const Vector2& pos, const Vector2& size, const Color& color);
+        Player(const Rectangle& rect, const Color& color);
         ~Player();
 
         void update(double dt);
 
         void render();
 
-        Vector2 position;
-        Vector2 size;
+        Rectangle shape;
         Color color;
 
         const float SPEED = 200.0;
