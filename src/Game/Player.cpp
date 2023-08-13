@@ -1,10 +1,11 @@
 #include "Game/Player.h"
+#include "Game/Entity.h"
 #include <raylib.h>
 
 namespace Game
 {
     Player::Player(const Rectangle& rect, const Color& color)
-        : shape(rect), color(color){}
+        : Entity(rect, color) {}
 
     Player::~Player() {}
 

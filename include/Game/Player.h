@@ -16,11 +16,7 @@ namespace Game
         void update(double dt);
 
         void render();
-
-        Rectangle shape;
-        Color color;
-
-        const float SPEED = 200.0;
+        const float SPEED = 400.0;
     };
 }
 

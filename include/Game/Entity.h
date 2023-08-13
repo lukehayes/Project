@@ -1,19 +1,42 @@
 #pragma once
 
-/**
-* Abstract base class for most things on screen.
-*/
-class Entity
+#include "raylib.h"
+
+namespace Game
 {
-public:
-    Entity() = default;
-    ~Entity() = default;
+    /**
+    * Abstract base class for most things on screen.
+    */
+    class Entity
+    {
+    public:
+        Entity(const Rectangle& rect, const Color color);
+        ~Entity();
 
-    virtual void update(double dt) = 0;
+        // ABSRACT METHODS
 
-    virtual void render() = 0;
+        /**
+        * Update the entity for the current frame.
+        * 
+        * @param Delta Time.
+        */
+        virtual void update(double dt) = 0;
 
-private:
-    
-};
+        /**
+        * Render the current frame for this Entity.
+        * 
+        * @param Delta Time.
+        */
+        virtual void render() = 0;
+
+        // GETTERS SETTERS 
+        Rectangle getShape();
+        Color getColor();
+        void setColor(Color color);
+
+    protected:
+        Rectangle shape;
+        Color color;
+    };
+}
 

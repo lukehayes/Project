@@ -1,5 +1,6 @@
 #pragma once
 
+#include "raylib.h"
 #include "Game/Entity.h"
 
 namespace Game
@@ -10,22 +11,21 @@ namespace Game
     class Interactable : public Entity
     {
     public:
-        Interactable();
+        Interactable(const Rectangle& rect, const Color color);
         ~Interactable();
+
+        /**
+        * Update the entity for the current frame.
+        * 
+        * @param Delta Time.
+        */
         virtual void update(double dt) = 0;
+
+        /**
+        * Render the current frame for this Entity.
+        * 
+        * @param Delta Time.
+        */
         virtual void render() = 0;
-
-    private:
-
     };
-
-    Interactable::Interactable()
-    {
-        TraceLog(LOG_DEBUG, "Interactable Created");
-    }
-
-    Interactable::~Interactable()
-    {
-    }
-
 }

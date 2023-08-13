@@ -12,41 +12,31 @@ namespace Game
     class Pickup : public Interactable
     {
     public:
-        Pickup(const Vector2& position, const Color& color);
+        Pickup(const Rectangle& rect, const Color color);
         ~Pickup();
-        void update(double dt);
-        void render();
 
-    private:
-        Vector2 position;
-        Color color;
+        /**
+        * Update the entity for the current frame.
+        * 
+        * @param Delta Time.
+        */
+        void update(double dt) = 0;
+
+        /**
+        * Render the current frame for this Entity.
+        * 
+        * @param Delta Time.
+        */
+        void render() = 0;
+
+        /**
+        * Get the name of the pickup
+        *
+        * @return The name of the pickup.
+        */
+        std::string getName() const;
+
+    protected:
         std::string name = "Pickup";
-
     };
-
-    Pickup::Pickup(const Vector2& pos, const Color& color)
-        : Interactable(), position(pos), color(color)
-    {
-        TraceLog(LOG_DEBUG, "Pickup Created");
-    }
-
-    Pickup::~Pickup()
-    {
-    }
-    
-    void Pickup::update(double dt)
-    {
-    }
-
-    void Pickup::render()
-    {
-        DrawRectangle(
-            this->position.x,
-            this->position.y,
-            20,20,
-            this->color
-        );
-    }
-
-
 }

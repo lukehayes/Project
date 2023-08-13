@@ -3,4 +3,7 @@ add_library(GameLib SHARED
   Game.cpp
 
   Player.cpp
+  Entity.cpp
+  Interactable.cpp
+  Pickup.cpp
 )

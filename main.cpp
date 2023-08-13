@@ -1,37 +1,96 @@
 #include "Game/Game.h"
 #include "Game/Player.h"
 #include "Game/Pickup.h"
+#include "Game/Entity.h"
+
+#include <vector>
+#include <memory>
 
 bool GAME_RUNNING = false;
 
+class SpecialPickup : public Game::Pickup
+{
+public:
+    SpecialPickup(const Rectangle& rect, const Color color)
+        : Game::Pickup(rect,color)
+    {}
+
+
+    /**
+    * Update the entity for the current frame.
+    * 
+    * @param Delta Time.
+    */
+    void update(double dt) {}
+
+    /**
+    * Render the current frame for this Entity.
+    * 
+    * @param Delta Time.
+    */
+    void render() {}
+
+    ~SpecialPickup() {}
+    
+    std::string name = "Special Pickup";
+
+private:
+    
+};
+
 int main() {
 
-    SetTraceLogLevel(LOG_NONE);
+    SetTraceLogLevel(LOG_DEBUG);
     Game::Game game;
 
-    Game::Player player({10,10,10,10}, {80,80,80,255});
+    Rectangle pr = {50,50,50,50};
+    Color pc = {80,80,80,255};
+    std::shared_ptr<Game::Player> player = std::make_shared<Game::Player>(pr, pc);
 
-    Game::Pickup pickup1({100,100}, PINK);
-    Game::Pickup pickup2({300,400}, PINK);
+    std::vector<std::shared_ptr<Game::Pickup>> pickups;
+
+    Rectangle r{120,120,20,20};
+    std::shared_ptr<Game::Pickup> pickup1 = std::make_shared<Game::Pickup>(r,BLUE);
+    pickups.push_back(pickup1);
+
+    Rectangle spr{220,120,50,50};
+    std::shared_ptr<Game::Pickup> sp = std::make_shared<SpecialPickup>(spr,BLUE);
+    pickups.push_back(sp);
 
 
     while(!GAME_RUNNING)
     {
         if (IsKeyPressed(KEY_ESCAPE) || WindowShouldClose()) GAME_RUNNING = true;
 
+        player->update(GetFrameTime());
 
+        for(auto& p : pickups)
+        {
+            if(CheckCollisionRecs(player->getShape(), p->getShape()))
+            {
+                TraceLog(LOG_DEBUG, "HIT");
+                p->setColor(RED);
+                TraceLog(LOG_DEBUG, p->getName().c_str());
+                player->setColor(BLUE);
 
-        player.update(GetFrameTime());
-        pickup1.update(GetFrameTime());
-        pickup2.update(GetFrameTime());
+            }else {
+                player->setColor({80,80,80,255});
+            }
+
+            p->update(GetFrameTime());
+        }
 
 
         BeginDrawing();
             ClearBackground(GRAY);
 
-            player.render();
-            pickup1.render();
-            pickup2.render();
+            player->render();
+
+            for(auto p : pickups)
+            {
+                p->render();
+            }
+
         EndDrawing();
     }
 
