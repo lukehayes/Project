@@ -6,9 +6,8 @@
 #include "raylib.h" 
 #include <array>
 #include <vector>
-#include <map>
 #include <string>
-#include <memory>
+#include <cstdint>
 
 /*============================================================
 // Framework Specific Includes
