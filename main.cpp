@@ -26,7 +26,7 @@ int main() {
     pickups.push_back(pickup1);
 
     Rectangle spr{220,120,50,50};
-    std::shared_ptr<Game::Pickup> sp = std::make_shared<SpecialPickup>(spr,BLUE);
+    std::shared_ptr<Game::Pickup> sp = std::make_shared<Game::SpecialPickup>(spr,BLUE);
     pickups.push_back(sp);
 
 
