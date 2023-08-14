@@ -6,4 +6,5 @@ add_library(GameLib SHARED
   Entity.cpp
   Interactable.cpp
   Pickup.cpp
+  SpecialPickup.cpp
 )

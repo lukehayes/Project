@@ -1,6 +1,7 @@
 #include "Game/Game.h"
 #include "Game/Player.h"
 #include "Game/Pickup.h"
+#include "Game/SpecialPickup.h"
 #include "Game/Entity.h"
 
 #include <vector>
@@ -8,35 +9,6 @@
 
 bool GAME_RUNNING = false;
 
-class SpecialPickup : public Game::Pickup
-{
-public:
-    SpecialPickup(const Rectangle& rect, const Color color)
-        : Game::Pickup(rect,color)
-    {}
-
-
-    /**
-    * Update the entity for the current frame.
-    * 
-    * @param Delta Time.
-    */
-    void update(double dt) {}
-
-    /**
-    * Render the current frame for this Entity.
-    * 
-    * @param Delta Time.
-    */
-    void render() {}
-
-    ~SpecialPickup() {}
-    
-    std::string name = "Special Pickup";
-
-private:
-    
-};
 
 int main() {
 
