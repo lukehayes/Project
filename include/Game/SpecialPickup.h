@@ -26,9 +26,7 @@ namespace Game
         */
         void render();
 
-        std::string getName();
-
     private:
-        std::string name = "Special Pickup";
+        const std::string name = "Special Pickup";
     };
 }
