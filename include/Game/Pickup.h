@@ -20,14 +20,14 @@ namespace Game
         * 
         * @param Delta Time.
         */
-        void update(double dt) = 0;
+        void update(double dt);
 
         /**
         * Render the current frame for this Entity.
         * 
         * @param Delta Time.
         */
-        void render() = 0;
+        void render();
 
         /**
         * Get the name of the pickup
@@ -37,6 +37,6 @@ namespace Game
         std::string getName() const;
 
     protected:
-        std::string name = "Pickup";
+       const  std::string name = "Pickup";
     };
 }
