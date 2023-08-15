@@ -17,12 +17,13 @@ SpecialPickup::SpecialPickup(const Rectangle& rect, const Color color)
 
     void SpecialPickup::render()
     {
-        Game::Pickup::render();
-    }
-
-    std::string SpecialPickup::getName()
-    {
-        return this->name;
+        DrawRectangle(
+            this->shape.x,
+            this->shape.y,
+            this->shape.width,
+            this->shape.height,
+            {50,140,50,255}
+        );
     }
 
     std::string name = "Special Pickup";

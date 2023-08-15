@@ -23,7 +23,7 @@ namespace Game
             this->shape.y,
             this->shape.width,
             this->shape.height,
-            {80,80,80,255}
+            {140,50,50,255}
         );
     }
 
