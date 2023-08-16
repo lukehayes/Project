@@ -34,7 +34,7 @@ namespace Game
         *
         * @return The name of the pickup.
         */
-        std::string getName() const;
+        virtual std::string getName() const;
 
     protected:
        const  std::string name = "Pickup";

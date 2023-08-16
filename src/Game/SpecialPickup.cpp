@@ -22,11 +22,13 @@ SpecialPickup::SpecialPickup(const Rectangle& rect, const Color color)
             this->shape.y,
             this->shape.width,
             this->shape.height,
-            {50,140,50,255}
+            {50,190,70,255}
         );
     }
 
-    std::string name = "Special Pickup";
+    std::string SpecialPickup::getName() const { 
+        return this->name;
+    }
 }
 
 

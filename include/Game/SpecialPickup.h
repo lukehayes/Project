@@ -26,6 +26,13 @@ namespace Game
         */
         void render();
 
+        /**
+        * Get the name of the type of Pickup
+        *
+        * @param Delta Time.
+        */
+        std::string getName() const;
+
     private:
         const std::string name = "Special Pickup";
     };
