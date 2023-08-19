@@ -22,7 +22,7 @@ SpecialPickup::SpecialPickup(const Rectangle& rect, const Color color)
             this->shape.y,
             this->shape.width,
             this->shape.height,
-            {50,190,70,255}
+            this->color
         );
     }
 

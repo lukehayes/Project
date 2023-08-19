@@ -23,7 +23,7 @@ namespace Game
             this->shape.y,
             this->shape.width,
             this->shape.height,
-            {140,50,50,255}
+            this->color
         );
     }
 

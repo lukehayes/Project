@@ -6,63 +6,47 @@
 
 #include <vector>
 #include <memory>
+#include <iostream>
 
 bool GAME_RUNNING = false;
-
 
 int main() {
 
     SetTraceLogLevel(LOG_DEBUG);
     Game::Game game;
 
-    Rectangle pr = {50,50,50,50};
-    Color pc = {80,80,80,255};
-    std::shared_ptr<Game::Player> player = std::make_shared<Game::Player>(pr, pc);
+    std::shared_ptr<Game::Player> player = std::make_shared<Game::Player>((Rectangle){50,50,50,50}, (Color){80,80,80,255});
 
     std::vector<std::shared_ptr<Game::Pickup>> pickups;
 
-    Rectangle r{120,120,20,20};
-    std::shared_ptr<Game::Pickup> pickup1 = std::make_shared<Game::Pickup>(r,BLUE);
-    pickups.push_back(pickup1);
-
-    Rectangle spr{220,120,50,50};
-    std::shared_ptr<Game::Pickup> sp = std::make_shared<Game::SpecialPickup>(spr,BLUE);
-    pickups.push_back(sp);
-
+    std::shared_ptr<Game::Pickup> p = std::make_shared<Game::Pickup>((Rectangle){200,100,30,30}, (Color){10,100,100,255});
+    std::shared_ptr<Game::SpecialPickup> sp = std::make_shared<Game::SpecialPickup>((Rectangle){130,130,30,30}, (Color){50,0,150,255});
 
     while(!GAME_RUNNING)
     {
         if (IsKeyPressed(KEY_ESCAPE) || WindowShouldClose()) GAME_RUNNING = true;
 
-        player->update(GetFrameTime());
 
-        for(auto& p : pickups)
+        if(CheckCollisionRecs(player->getShape(), p->getShape()))
         {
-            if(CheckCollisionRecs(player->getShape(), p->getShape()))
-            {
-                TraceLog(LOG_DEBUG, "HIT");
-                p->setColor(RED);
-                TraceLog(LOG_DEBUG, p->getName().c_str());
-                player->setColor(BLUE);
-
-            }else {
-                player->setColor({80,80,80,255});
-            }
-
-            p->update(GetFrameTime());
+            std::cout << p->getName() << std::endl;
+            p->setColor(BLUE);
+            p->setShape((Rectangle){(int)GetRandomValue(10,500), (int)GetRandomValue(10,500),10,10});
         }
 
+        if(CheckCollisionRecs(player->getShape(), sp->getShape()))
+        {
+            std::cout << sp->getName() << std::endl;
+            sp->setColor(RED);
+        }
+
+        player->update(GetFrameTime());
 
         BeginDrawing();
-            ClearBackground(GRAY);
-
+            ClearBackground(LIGHTGRAY);
             player->render();
-
-            for(auto p : pickups)
-            {
-                p->render();
-            }
-
+            p->render();
+            sp->render();
         EndDrawing();
     }
 
