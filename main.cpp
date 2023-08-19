@@ -17,36 +17,32 @@ int main() {
 
     std::shared_ptr<Game::Player> player = std::make_shared<Game::Player>((Rectangle){50,50,50,50}, (Color){80,80,80,255});
 
-    std::vector<std::shared_ptr<Game::Pickup>> pickups;
+    std::vector<std::shared_ptr<Game::Entity>> entities;
 
-    std::shared_ptr<Game::Pickup> p = std::make_shared<Game::Pickup>((Rectangle){200,100,30,30}, (Color){10,100,100,255});
-    std::shared_ptr<Game::SpecialPickup> sp = std::make_shared<Game::SpecialPickup>((Rectangle){130,130,30,30}, (Color){50,0,150,255});
+    std::shared_ptr<Game::Pickup> p = std::make_shared<Game::Pickup>((Rectangle){200,100,20,20}, (Color){10,200,100,255});
+    std::shared_ptr<Game::SpecialPickup> sp = std::make_shared<Game::SpecialPickup>((Rectangle){130,130,30,30}, (Color){150,0,250,255});
+
+    entities.push_back(player);
+    entities.push_back(p);
+    entities.push_back(sp);
 
     while(!GAME_RUNNING)
     {
         if (IsKeyPressed(KEY_ESCAPE) || WindowShouldClose()) GAME_RUNNING = true;
 
-
-        if(CheckCollisionRecs(player->getShape(), p->getShape()))
+        for(auto entity : entities)
         {
-            std::cout << p->getName() << std::endl;
-            p->setColor(BLUE);
-            p->setShape((Rectangle){(int)GetRandomValue(10,500), (int)GetRandomValue(10,500),10,10});
+            entity->update(GetFrameTime());
         }
-
-        if(CheckCollisionRecs(player->getShape(), sp->getShape()))
-        {
-            std::cout << sp->getName() << std::endl;
-            sp->setColor(RED);
-        }
-
-        player->update(GetFrameTime());
 
         BeginDrawing();
             ClearBackground(LIGHTGRAY);
-            player->render();
-            p->render();
-            sp->render();
+
+            for(auto entity : entities)
+            {
+                entity->render();
+            }
+
         EndDrawing();
     }
 
