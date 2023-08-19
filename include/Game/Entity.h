@@ -31,6 +31,13 @@ namespace Game
 
         // GETTERS SETTERS 
         Rectangle getShape();
+
+        /**
+        * Set the Entities Rectangle.
+        *
+        * @param shape A Rectangle instance.
+        */
+        void setShape(const Rectangle& shape);
         Color getColor();
         void setColor(Color color);
 

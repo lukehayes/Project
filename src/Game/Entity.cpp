@@ -7,6 +7,11 @@ namespace Game
         return this->shape;
     }
 
+    void Entity::setShape(const Rectangle& shape)
+    {
+        this->shape = shape;
+    }
+
     Color Entity::getColor()
     { 
         return this->color;
