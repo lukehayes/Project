@@ -13,20 +13,6 @@ namespace Game
         ~SpecialPickup();
 
         /**
-        * Update the entity for the current frame.
-        *
-        * @param Delta Time.
-        */
-        void update(double dt);
-
-        /**
-        * Render the current frame for this Entity.
-        *
-        * @param Delta Time.
-        */
-        void render();
-
-        /**
         * Get the name of the type of Pickup
         *
         * @param Delta Time.
