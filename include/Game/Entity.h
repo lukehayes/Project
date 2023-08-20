@@ -59,10 +59,29 @@ namespace Game
         */
         void setColor(Color color);
 
+        /**
+        * Set the Entities target.
+        *
+        * @param Target vector.
+        */
+        void setTarget(Vector2 target)
+        {
+            this->target = target;
+        }
+
+        /**
+        * Get the Entities target.
+        */
+        Vector2 getTarget()
+        {
+            return this->target;
+        }
+
     protected:
         Rectangle shape;
         float scale;
         Color color;
+        Vector2 target;
     };
 }
 
