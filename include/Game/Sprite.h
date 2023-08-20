@@ -2,6 +2,7 @@
 
 #include "raylib.h"
 #include "Game/Entity.h"
+#include <iostream>
 
 namespace Game
 {
@@ -37,7 +38,7 @@ namespace Game
 
             DrawTexturePro(
                 this->texture,
-                {this->shape.x, this->shape.y,16,16},
+                {0,0,16,16},
                 {this->shape.x, this->shape.y,this->scale, this->scale},
                 {0,0},
                 0,
@@ -45,9 +46,8 @@ namespace Game
             );
         }
 
-        Texture2D texture;
-
     private:
+        Texture2D texture;
         float scale;
     };
 }
