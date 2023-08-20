@@ -2,8 +2,8 @@
 
 namespace Game
 {
-    Interactable::Interactable(const Rectangle& rect, const Color color)
-        : Entity(rect, color)
+    Interactable::Interactable(const Vector2& position, float scale, const Color color)
+        : Entity(position, scale, color)
     {
 
         TraceLog(LOG_DEBUG, "Interactable Created");

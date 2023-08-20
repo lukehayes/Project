@@ -2,9 +2,9 @@
 
 namespace Game
 {
-    Pickup::Pickup(const Rectangle& rect, const Color color)
-        : Interactable(rect, color)
-   {
+    Pickup::Pickup(const Vector2& position, float scale, const Color color)
+        : Interactable(position, scale, color)
+    {
         TraceLog(LOG_DEBUG, "Pickup Created");
     }
 

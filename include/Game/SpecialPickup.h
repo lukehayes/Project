@@ -8,7 +8,7 @@ namespace Game
     {
 
     public:
-        SpecialPickup(const Rectangle& rect, const Color color);
+        SpecialPickup(const Vector2& position, float scale, const Color color);
 
         ~SpecialPickup();
 

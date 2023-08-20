@@ -10,7 +10,7 @@ namespace Game
     class Entity
     {
     public:
-        Entity(const Rectangle& rect, const Color color);
+        Entity(const Vector2& position, float scale, const Color color);
         ~Entity();
 
         // ABSRACT METHODS
@@ -61,6 +61,7 @@ namespace Game
 
     protected:
         Rectangle shape;
+        float scale;
         Color color;
     };
 }

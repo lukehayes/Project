@@ -4,8 +4,8 @@
 
 namespace Game
 {
-    Player::Player(const Rectangle& rect, const Color& color)
-        : Entity(rect, color) {}
+    Player::Player(const Vector2& position, float scale, const Color color)
+        : Entity(position, scale, color) {}
 
     Player::~Player() {}
 

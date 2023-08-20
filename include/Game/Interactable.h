@@ -11,7 +11,7 @@ namespace Game
     class Interactable : public Entity
     {
     public:
-        Interactable(const Rectangle& rect, const Color color);
+        Interactable(const Vector2& position, float scale, const Color color);
         ~Interactable();
 
         /**

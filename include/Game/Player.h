@@ -10,7 +10,7 @@ namespace Game
     class Player : public Entity
     {
     public:
-        Player(const Rectangle& rect, const Color& color);
+        Player(const Vector2& position, float scale, const Color color);
         ~Player();
 
         void update(double dt);

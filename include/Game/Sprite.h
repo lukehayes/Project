@@ -11,8 +11,8 @@ namespace Game
     class Sprite : public Entity
     {
     public:
-        Sprite(const char* path, const Vector2& position, const Color color)
-        : texture(LoadTexture(path)), Entity({position.x, position.y, 16,16}, color)
+        Sprite(const char* path, float scale, const Vector2& position, const Color color)
+        : texture(LoadTexture(path)), scale(16 * scale), Entity(position, scale, color)
         {}
 
         ~Sprite() {
@@ -35,19 +35,20 @@ namespace Game
         */
         virtual void render() {
 
-            int scale = 10;
-
             DrawTexturePro(
                 this->texture,
                 {this->shape.x, this->shape.y,16,16},
-                {this->shape.x, this->shape.y, 16 * 20,16 * 20},
-                {1,5},
+                {this->shape.x, this->shape.y,this->scale, this->scale},
+                {0,0},
                 0,
                 this->color
             );
         }
 
         Texture2D texture;
+
+    private:
+        float scale;
     };
 }
 

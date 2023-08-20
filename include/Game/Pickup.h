@@ -12,7 +12,7 @@ namespace Game
     class Pickup : public Interactable
     {
     public:
-        Pickup(const Rectangle& rect, const Color color);
+        Pickup(const Vector2& position, float scale, const Color color);
         ~Pickup();
 
         /**

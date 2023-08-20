@@ -19,7 +19,7 @@ namespace Game
                 this->title
                 );
 
-        InitAudioDevice();
+        //InitAudioDevice();
 
         SetTargetFPS(60);
         SetExitKey(KEY_Q);

@@ -2,8 +2,8 @@
 
 namespace Game 
 {
-SpecialPickup::SpecialPickup(const Rectangle& rect, const Color color)
-        : Game::Pickup(rect,color)
+    SpecialPickup::SpecialPickup(const Vector2& position, float scale, const Color color)
+        : Game::Pickup(position,scale, color)
     {
         TraceLog(LOG_DEBUG, "SPECIAL PICKUP CREATED");
     }
