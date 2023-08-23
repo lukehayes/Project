@@ -17,14 +17,12 @@ int main() {
     SetTraceLogLevel(LOG_DEBUG);
     Game::Game game;
 
-    std::shared_ptr<Game::Player> player = std::make_shared<Game::Player>((Vector2){100,100}, 100, (Color){80,80,80,255});
+    std::shared_ptr<Game::Player> player = std::make_shared<Game::Player>((Vector2){100,100}, 10, (Color){80,80,80,255});
 
     std::vector<std::shared_ptr<Game::Entity>> entities;
+    std::vector<std::shared_ptr<Game::Sprite>> sprites;
 
-    //std::shared_ptr<Game::Pickup> p = std::make_shared<Game::Pickup>((Rectangle){600,600,50,50}, (Color){10,200,100,255});
-    //std::shared_ptr<Game::SpecialPickup> sp = std::make_shared<Game::SpecialPickup>((Rectangle){430,730,50,50}, (Color){150,0,250,255});
-
-    for(int i = 0; i <= 1000; i++)
+    for(int i = 0; i <= 10; i++)
     {
         float rx = GetRandomValue(10,1800);
         float ry = GetRandomValue(10,900);
@@ -36,9 +34,7 @@ int main() {
     std::shared_ptr<Game::Sprite> sprite = std::make_shared<Game::Sprite>("../assets/images/tadpole.png",10, (Vector2){400,400}, (Color){255,255,255,255});
 
     entities.push_back(player);
-    //entities.push_back(p);
-    //entities.push_back(sp);
-    entities.push_back(sprite);
+    //entities.push_back(sprite);
 
     while(!GAME_RUNNING)
     {
@@ -47,12 +43,7 @@ int main() {
         for(auto entity : entities)
         {
             entity->update(GetFrameTime());
-            Vector2 spritePos = {entity->getShape().x, entity->getShape().y};
-            spritePos = Vector2MoveTowards(spritePos, (Vector2){player->getShape().x, player->getShape().y}, 1);
-            entity->setShape({spritePos.x, spritePos.y, 16,16});
         }
-
-
 
         BeginDrawing();
             ClearBackground({10,10,20,255});
