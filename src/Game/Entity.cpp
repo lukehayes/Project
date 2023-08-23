@@ -21,6 +21,17 @@ namespace Game
         this->shape = shape;
     }
 
+    void Entity::setPosition(const Vector2& position)
+    {
+        this->shape.x = position.x;
+        this->shape.y = position.y;
+    }
+
+    Vector2 Entity::getPosition() const
+    {
+        return {this->shape.x, this->shape.y};
+    }
+
     Color Entity::getColor()
     { 
         return this->color;

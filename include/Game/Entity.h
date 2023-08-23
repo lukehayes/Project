@@ -46,6 +46,21 @@ namespace Game
         void setShape(const Rectangle& shape);
 
         /**
+        * Set the position of an Entity.
+        *
+        * @param Vector2 position.
+        */
+        void setPosition(const Vector2& position);
+
+        /**
+        * Get the entities position.
+        *
+        * @return The entities position.
+        */
+        Vector2 getPosition() const;
+
+
+        /**
         * Get the Entities Color.
         *
         * @return The entities color.
