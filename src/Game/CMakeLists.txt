@@ -7,4 +7,5 @@ add_library(GameLib SHARED
   Interactable.cpp
   Pickup.cpp
   SpecialPickup.cpp
+  Sprite.cpp
 )
