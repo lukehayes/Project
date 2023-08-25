@@ -14,23 +14,28 @@ bool GAME_RUNNING = false;
 
 int main() {
 
-    SetTraceLogLevel(LOG_DEBUG);
+    SetTraceLogLevel(LOG_ALL);
     Game::Game game;
 
     std::vector<std::shared_ptr<Game::Entity>> entities;
     std::vector<std::shared_ptr<Game::Sprite>> sprites;
+    
+    std::shared_ptr<Game::Player> player = std::make_shared<Game::Player>((Vector2){10,10}, 10, BLUE);
+    entities.push_back(player);
 
-    for(int i = 0; i <= 10; i++)
+    std::shared_ptr<Game::Sprite> sprite = std::make_shared<Game::Sprite>("../assets/images/tadpole.png",1, (Vector2){100,100}, (Color){255,255,255,255});
+    sprite->setTarget(player->getPosition());
+    entities.push_back(sprite);
+
+    for(int i = 0; i<=5; i++)
     {
-        float rx = GetRandomValue(10,760);
-        float ry = GetRandomValue(10,550);
-        std::shared_ptr<Game::Entity> sprite = std::make_shared<Game::Sprite>("../assets/images/tadpole.png",3, (Vector2){rx,ry}, (Color){255,255,255,255});
-
+        float rx = GetRandomValue(10,400);
+        float ry = GetRandomValue(10,400);
+        std::shared_ptr<Game::Sprite> sprite = std::make_shared<Game::Sprite>("../assets/images/tadpole.png",1, (Vector2){rx,ry}, (Color){255,255,255,255});
         entities.push_back(sprite);
     }
 
-    std::shared_ptr<Game::Player> player = std::make_shared<Game::Player>((Vector2){100,100}, 10, (Color){80,80,80,255});
-    entities.push_back(player);
+
 
     while(!GAME_RUNNING)
     {
@@ -39,6 +44,7 @@ int main() {
         for(auto& entity : entities)
         {
             entity->update(GetFrameTime());
+            entity->setTarget(player->getPosition());
         }
 
         BeginDrawing();
