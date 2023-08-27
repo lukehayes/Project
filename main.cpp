@@ -19,23 +19,10 @@ int main() {
 
     std::vector<std::shared_ptr<Game::Entity>> entities;
     std::vector<std::shared_ptr<Game::Sprite>> sprites;
+    std::vector<std::shared_ptr<Game::Entity>> pickups;
     
     std::shared_ptr<Game::Player> player = std::make_shared<Game::Player>((Vector2){10,10}, 10, BLUE);
     entities.push_back(player);
-
-    std::shared_ptr<Game::Sprite> sprite = std::make_shared<Game::Sprite>("../assets/images/tadpole.png",1, (Vector2){100,100}, (Color){255,255,255,255});
-    sprite->setTarget(player->getPosition());
-    entities.push_back(sprite);
-
-    for(int i = 0; i<=5; i++)
-    {
-        float rx = GetRandomValue(10,400);
-        float ry = GetRandomValue(10,400);
-        std::shared_ptr<Game::Sprite> sprite = std::make_shared<Game::Sprite>("../assets/images/tadpole.png",1, (Vector2){rx,ry}, (Color){255,255,255,255});
-        entities.push_back(sprite);
-    }
-
-
 
     while(!GAME_RUNNING)
     {
@@ -44,7 +31,6 @@ int main() {
         for(auto& entity : entities)
         {
             entity->update(GetFrameTime());
-            entity->setTarget(player->getPosition());
         }
 
         BeginDrawing();

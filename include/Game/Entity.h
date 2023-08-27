@@ -93,9 +93,10 @@ namespace Game
         }
 
     protected:
-        Rectangle shape;
+        Vector2 position;
         float scale;
         Color color;
+        Rectangle shape;
         Vector2 target;
     };
 }

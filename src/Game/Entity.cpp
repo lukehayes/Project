@@ -3,17 +3,31 @@
 namespace Game
 {
     Entity::Entity(const Vector2& position, float scale, const Color color)
-        : shape({position.x, position.y, scale,scale}), scale(scale), color(color)
+        : position(position), scale(scale), color(color)
     {
         TraceLog(LOG_DEBUG, "Entity Created");
+        
+        // TODO Set the shape explicitly here. Not great but works for now.
+        this->setShape({
+            this->position.x,
+            this->position.y,
+            scale,
+            scale
+        });
     }
 
     Entity::~Entity()
     {
     }
+
     Rectangle Entity::getShape()
     { 
-        return this->shape;
+        return {
+            this->position.x, 
+            this->position.y, 
+            this->scale,
+            this->scale
+        };
     }
 
     void Entity::setShape(const Rectangle& shape)
@@ -23,13 +37,12 @@ namespace Game
 
     void Entity::setPosition(const Vector2& position)
     {
-        this->shape.x = position.x;
-        this->shape.y = position.y;
+        this->position = position;
     }
 
     Vector2 Entity::getPosition() const
     {
-        return {this->shape.x, this->shape.y};
+        return this->position;
     }
 
     Color Entity::getColor()

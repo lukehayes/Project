@@ -1,6 +1,7 @@
 #include "Game/Player.h"
 #include "Game/Entity.h"
 #include <raylib.h>
+#include <iostream>
 
 namespace Game
 {
@@ -16,32 +17,31 @@ namespace Game
         //--------------------------------------------------------------------- 
         if(IsKeyDown(KEY_W))
         {
-            this->shape.y -= SPEED * dt;
+            this->position.y -= SPEED * dt;
         }
 
         if(IsKeyDown(KEY_S))
         {
-            this->shape.y += SPEED * dt;
+            this->position.y += SPEED * dt;
         }
 
         if(IsKeyDown(KEY_A))
         {
-            this->shape.x -= SPEED * dt;
+            this->position.x -= SPEED * dt;
         }
 
         if(IsKeyDown(KEY_D))
         {
-            this->shape.x += SPEED * dt;
+            this->position.x += SPEED * dt;
         }
+
+        this->setShape({this->position.x, this->position.y, this->scale, this->scale});
     }
 
     void Player::render()
     {
-        DrawRectangle(
-            this->shape.x,
-            this->shape.y,
-            this->shape.width,
-            this->shape.height,
+        DrawRectangleRec(
+            this->shape,
             this->color
         );
     }
