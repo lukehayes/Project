@@ -16,7 +16,7 @@ namespace Game
         void update(double dt);
 
         void render();
-        const float SPEED = 400.0;
+        const float SPEED = 200.0;
     };
 }
 
