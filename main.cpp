@@ -46,6 +46,14 @@ int main() {
             // Collisions
             if(CheckCollisionRecs(player->getShape(), pickup->getShape()))
             {
+
+                auto res = std::find(pickups.begin(), pickups.end(), pickup);
+
+                const Vector2 rp = {(float)GetRandomValue(0,100), (float)GetRandomValue(0,100)};
+
+                auto p = *res;
+                p->setPosition(rp);
+
                 TraceLog(LOG_DEBUG, pickup->getName().c_str());
             }
         }
