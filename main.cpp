@@ -6,6 +6,7 @@
 
 #include <vector>
 #include <memory>
+#include <algorithm>
 
 bool GAME_RUNNING = false;
 
@@ -46,7 +47,6 @@ int main() {
             // Collisions
             if(CheckCollisionRecs(player->getShape(), pickup->getShape()))
             {
-
                 auto res = std::find(pickups.begin(), pickups.end(), pickup);
 
                 const Vector2 rp = {(float)GetRandomValue(0,100), (float)GetRandomValue(0,100)};
